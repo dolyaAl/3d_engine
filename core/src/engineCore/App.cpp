@@ -1,13 +1,19 @@
-#include <engineCore/utils/test.hpp>
-#include <iostream>
+#include "engineCore/App.hpp"
 #include <GLFW/glfw3.h>
+#include <iostream>
 
 namespace Engine
 {
-	int checkGLFW()
+	App::App()
 	{
-		std::cout << "Hello World!" << std::endl;
 
+	}
+	App::~App()
+	{
+
+	}
+	int App::start(unsigned int window_width, unsigned int window_height, const char* title)
+	{
         GLFWwindow* window;
 
         /* Initialize the library */
@@ -15,7 +21,7 @@ namespace Engine
             return -1;
 
         /* Create a windowed mode window and its OpenGL context */
-        window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+        window = glfwCreateWindow(window_width, window_height, title, nullptr, nullptr);
         if (!window)
         {
             glfwTerminate();
@@ -36,9 +42,12 @@ namespace Engine
 
             /* Poll for and process events */
             glfwPollEvents();
+
+            on_update();
         }
 
         glfwTerminate();
-        return 0;
+		return 0;
 	}
+
 }

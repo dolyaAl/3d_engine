@@ -2,9 +2,18 @@ cmake_minimum_required(VERSION 3.12)
 
 set(ENGINE_PROJECT_NAME 3d_engine_core)
 
+set(ENGINE_PUBLIC_INCLUDES
+includes/engineCore/App.hpp
+)
+
+set(ENGINE_PRIVATE_SOURCES
+src/engineCore/App.cpp
+)
+
+
 add_library(${ENGINE_PROJECT_NAME} STATIC 
-src/engineCore/utils/test.cpp
-includes/engineCore/utils/test.hpp
+${ENGINE_PUBLIC_INCLUDES}
+${ENGINE_PRIVATE_SOURCES}
 )
 
 target_include_directories(${ENGINE_PROJECT_NAME} PUBLIC includes)

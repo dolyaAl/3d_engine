@@ -1,4 +1,0 @@
-namespace Engine
-{
-	int checkGLFW();
-}
